@@ -1,0 +1,25 @@
+entity ApiEndpoint(API_ENDPOINT) {
+	vendor ApiEndpointVendor,
+    type String required maxlength(50),
+    enabled Boolean  required,
+    rate Integer  required,
+    url String required maxlength(200)
+}
+
+enum ApiEndpointVendor{
+	INFOBIP
+}
+
+
+// Set pagination options
+
+paginate all with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

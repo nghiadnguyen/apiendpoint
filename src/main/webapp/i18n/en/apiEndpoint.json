@@ -1,0 +1,26 @@
+{
+  "apiendpointApp": {
+    "apiEndpoint": {
+      "home": {
+        "title": "Api Endpoints",
+        "createLabel": "Create a new Api Endpoint",
+        "createOrEditLabel": "Create or edit a Api Endpoint",
+        "notFound": "No Api Endpoints found"
+      },
+      "created": "A new Api Endpoint is created with identifier {{ param }}",
+      "updated": "A Api Endpoint is updated with identifier {{ param }}",
+      "deleted": "A Api Endpoint is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Api Endpoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Api Endpoint"
+      },
+      "vendor": "Vendor",
+      "type": "Type",
+      "enabled": "Enabled",
+      "rate": "Rate",
+      "url": "Url"
+    }
+  }
+}

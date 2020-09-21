@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="apiEndpoint">
+            <h2><span jhiTranslate="apiendpointApp.apiEndpoint.detail.title">Api Endpoint</span> {{ apiEndpoint.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="apiendpointApp.apiEndpoint.vendor">Vendor</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'apiendpointApp.ApiEndpointVendor.' + apiEndpoint.vendor }}">{{ apiEndpoint.vendor }}</span>
+                </dd>
+                <dt><span jhiTranslate="apiendpointApp.apiEndpoint.type">Type</span></dt>
+                <dd>
+                    <span>{{ apiEndpoint.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="apiendpointApp.apiEndpoint.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{ apiEndpoint.enabled }}</span>
+                </dd>
+                <dt><span jhiTranslate="apiendpointApp.apiEndpoint.rate">Rate</span></dt>
+                <dd>
+                    <span>{{ apiEndpoint.rate }}</span>
+                </dd>
+                <dt><span jhiTranslate="apiendpointApp.apiEndpoint.url">Url</span></dt>
+                <dd>
+                    <span>{{ apiEndpoint.url }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/api-endpoint', apiEndpoint.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

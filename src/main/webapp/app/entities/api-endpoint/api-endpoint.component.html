@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="apiendpointApp.apiEndpoint.home.title">Api Endpoints</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-api-endpoint" [routerLink]="['/api-endpoint/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="apiendpointApp.apiEndpoint.home.createLabel">
+            Create a new Api Endpoint
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="apiEndpoints?.length === 0">
+        <span jhiTranslate="apiendpointApp.apiEndpoint.home.notFound">No apiEndpoints found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="apiEndpoints && apiEndpoints.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="vendor"><span jhiTranslate="apiendpointApp.apiEndpoint.vendor">Vendor</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="apiendpointApp.apiEndpoint.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="enabled"><span jhiTranslate="apiendpointApp.apiEndpoint.enabled">Enabled</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rate"><span jhiTranslate="apiendpointApp.apiEndpoint.rate">Rate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="url"><span jhiTranslate="apiendpointApp.apiEndpoint.url">Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let apiEndpoint of apiEndpoints ;trackBy: trackId">
+                    <td><a [routerLink]="['/api-endpoint', apiEndpoint.id, 'view']">{{ apiEndpoint.id }}</a></td>
+                    <td jhiTranslate="{{ 'apiendpointApp.ApiEndpointVendor.' + apiEndpoint.vendor }}">{{ apiEndpoint.vendor }}</td>
+                    <td>{{ apiEndpoint.type }}</td>
+                    <td>{{ apiEndpoint.enabled }}</td>
+                    <td>{{ apiEndpoint.rate }}</td>
+                    <td>{{ apiEndpoint.url }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/api-endpoint', apiEndpoint.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/api-endpoint', apiEndpoint.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(apiEndpoint)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="apiEndpoints && apiEndpoints.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

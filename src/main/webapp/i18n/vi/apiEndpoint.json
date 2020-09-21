@@ -1,0 +1,26 @@
+{
+  "apiendpointApp": {
+    "apiEndpoint": {
+      "home": {
+        "title": "Api Endpoints",
+        "createLabel": "Thêm mới một Api Endpoint",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Api Endpoint",
+        "notFound": "No Api Endpoints found"
+      },
+      "created": "Một Api Endpoint mới được tạo với định danh {{ param }}",
+      "updated": "Một Api Endpoint cập nhật với định danh {{ param }}",
+      "deleted": "Một Api Endpoint đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Api Endpoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Api Endpoint"
+      },
+      "vendor": "Vendor",
+      "type": "Type",
+      "enabled": "Enabled",
+      "rate": "Rate",
+      "url": "Url"
+    }
+  }
+}
